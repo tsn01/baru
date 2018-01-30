@@ -1,0 +1,637 @@
+FORMAT: 1A
+
+# Dev Overview of OpenID Connect
+OpenID Connect is a simple identity layer built on top of the OAuth 2.0 protocol, which allows clients to verify the identity of an end user based on the authentication performed by an authorization server or identity provider (IdP), as well as to obtain basic profile information about the end user in an interoperable and REST-like manner. OpenID Connect specifies a RESTful HTTP API, using JSON as a data format.
+
+OpenID Connect is an increasingly common authentication protocol: when an app prompts you to authenticate using your Facebook or Google+ credentials, the app is probably using OpenID Connect.
+
+OpenID Connect allows a range of clients, including web-based, mobile, and JavaScript clients, to request and receive information about authenticated sessions and end-users.
+
+## Authorization [/oidc/auth]
++ `Get Authorization Code` : Use this API to start a new session using an authorization code that gets returned as part of the OpenId Connect Authentication Flow.
++ `Get an OIDC ID Token` : Use this API to authenticate a user as part of the OpenID Connect Implicit Flow and generate an `ID Token` for the user.
+
+### Get Authorization Code [GET]
++ Request
+    + Attributes (Get Auth Code Request)
+
++ Response 302 (application/json)
+    + Attributes (Get Auth Code response)
+
++ Request
+    + Attributes (Get Auth Code Request)
+
++ Response 302 (application/json)
+    + Attributes (Unsupported Respone Type)
+
++ Request
+    + Attributes (Get Auth Code Request)
+
++ Response 302 (application/json)
+    + Attributes (Invalid Respone)
+
++ Request
+    + Attributes (Get Auth Code Request)
+
++ Response 400 (application/json)
+    + Attributes (Missing Required Respone)
+
++ Request
+    + Attributes (Get Auth Code Request)
+
++ Response 401 (application/json)
+    + Attributes (Authentication Failed)
+
++ Request
+    + Attributes (Get Auth Code Request)
+
++ Response 401 (application/json)
+    + Attributes (Unauthorized Reponse)
+
+### Get an OIDC ID Token [GET]
++ Request
+    + Attributes (Get an OIDC ID Token Request)
+
++ Response 302 (application/json)
+    + Attributes (OIDC ID Token Reponse)
+
++ Request
+    + Attributes (Get an OIDC ID Token Request)
+
++ Response 302 (application/json)
+    + Attributes (Unsupported Respone Type)
+
+
++ Request
+    + Attributes (Get an OIDC ID Token Request)
+
++ Response 302 (application/json)
+    + Attributes (Invalid Respone)
+
++ Request
+    + Attributes (Get an OIDC ID Token Request)
+
++ Response 400 (application/json)
+    + Attributes (Missing Required Respone)
+
++ Request
+    + Attributes (Get an OIDC ID Token Request)
+
++ Response 401 (application/json)
+    + Attributes (Redirect Uri Mismact Reponse)
+
++ Request
+    + Attributes (Get an OIDC ID Token Request)
+
++ Response 401 (application/json)
+    + Attributes (Invalid Client Reponse)
+
+## Session [/oidc/token]
++ `Create Session via Authorization Code` : Use this API to start a new session using an authorization code that gets returned as part of the OpenId Connect Authentication Flow.
++ `Create Session via Username/Password` : Use this API to authenticate a given user’s username and password. It makes use of the OpenID password grant and upon success will create a session and return an access token.
++ `Refresh a Session` : Use this API to refresh the session for a user and generate a new set of access tokens.
+
+### Create Session via Authorization Code [POST]
++ Request
+    + Attributes (Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 200 (application/json)
+    + Attributes (Create Session Reponse)
+
++ Request
+    + Attributes (Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Resource Not Found Reponse)
+
++ Request
+    + Attributes (Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Invalid Grand Reponse)
+
++ Request
+    + Attributes (Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Missing Required Respone)
+
++ Request
+    + Attributes (Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Invalid Authorization Header Reponse)
+
++ Request
+    + Attributes (Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (Authentication Failed)
+
++ Request
+    + Attributes (Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (Unauthorized Reponse)
+
+### Create Session via Username/Password [POST]
+
++ Request
+    + Attributes (Create Session via Username/Password Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 200 (application/json)
+    + Attributes (Create Session Username Reponse)
+
++ Request
+    + Attributes (Create Session via Username/Password Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Resource Not Found Reponse)
+
++ Request
+    + Attributes (Create Session via Username/Password Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Unsupported Grand Type Reponse)
+
++ Request
+    + Attributes (Create Session via Username/Password Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Invalid Authorization Header Reponse)
+
++ Request
+    + Attributes (Create Session via Username/Password Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (Authentication Failed)
+
++ Request
+    + Attributes (Create Session via Username/Password Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (Invalid User Credential)
+
++ Request
+    + Attributes (Create Session via Username/Password Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (MFA Required Reponse)
+
++ Request
+    + Attributes (Create Session via Username/Password Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (User Locked Reponse)
+
++ Request
+    + Attributes (Create Session via Username/Password Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (User Suspended Reponse)
+
++ Request
+    + Attributes (Create Session via Username/Password Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (Password Expire Reponse)
+
++ Request
+    + Attributes (Create Session via Username/Password Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (Unauthorized Reponse)
+
+## Validate a Session [/oidc/token/introspection]
+Use this API to check the status of a session that was started via either the Authentication or Username/Password flow.
+
+### Validate a Session [POST]
+
++ Request
+    + Attributes (Create Session via Username/Password Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 200 (application/json)
+    + Attributes (Validate Response)
+
++ Request
+    + Attributes (Create Session via Username/Password Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 200 (application/json)
+    + Attributes (Session Expire Revoke)
+
++ Request
+    + Attributes (Create Session via Username/Password Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Session Expire Revoke)
+
+## Refresh a Session [/oidc/token]
+Use this API to refresh the session for a user and generate a new set of access tokens.
+
+### Refresh a Session  [POST]
++ Request
+    + Attributes (Refresh a Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 200 (application/json)
+    + Attributes (Create Session Reponse)
+
++ Request
+    + Attributes (Refresh a Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Resource Not Found Reponse)
+
++ Request
+    + Attributes (Refresh a Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Unsupported Grand Type Reponse)
+
++ Request
+    + Attributes (Refresh a Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Invalid Authorization Header Reponse)
+
++ Request
+    + Attributes (Refresh a Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Invalid Authorization Header Reponse)
+
++ Request
+    + Attributes (Refresh a Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (Authentication Failed)
+
++ Request
+    + Attributes (Refresh a Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (User Locked Reponse)
+
++ Request
+    + Attributes (Refresh a Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (User Suspended Reponse)
+
++ Request
+    + Attributes (Refresh a Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (Unauthorized Reponse)
+
+## Revoke a Session [/oidc/token/revocation]
+Use this API to end the session for a user and invalidate the access_token.
+
+### Revoke a Session [POST]
++ Request
+    + Attributes (Revoke Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 200 (application/json)
+    + Attributes (Null)
+
++ Request
+    + Attributes (Revoke Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Revoke Unsupported Reponse)
+
++ Request
+    + Attributes (Revoke Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Invalid Authorization Header Reponse)
+
++ Request
+    + Attributes (Revoke Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (Authentication Failed)
+
++ Request
+    + Attributes (Revoke Session Request)
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (Unauthorized Reponse)
+
+## Get User Info [/oidc/me]
+Use this API to get the user information related to a given access_token.
+
+### Get User Info  [GET]
++ Request
+    + Attributes
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 200 (application/json)
+    + Attributes (Get User Response)
+
++ Request
+    + Attributes
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (No Bearer Reponse)
+
++ Request
+    + Attributes
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 400 (application/json)
+    + Attributes (Invalid Authorization Header Reponse)
+
++ Request
+    + Attributes
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (Invalid Token Reponse)
+
++ Request
+    + Attributes
+      + Headers
+
+            Authorization: Basic <base64 encoded "clientId:clientSecret">
+
++ Response 401 (application/json)
+    + Attributes (Invalid Token Reponse)
+
+# Data Structures
+## Get Auth Code Request (object)
++ redirect_uri (required, string) ...The redirect uri that is registered with OneLogin for this OpenId Connect app.
++ response_type (required, string) ...Set to “code”
++ scope (required, string) ...Requires at least “openid”. Add “profile” and/or “email” to get additional user information returned in the id_token and User Info endpoint.
++ nonce (optional, string) ...A secure random string that is used by the OpenID provider to protect against replay attacks.
++ state (optional, string) ...A random string that is returned on success and can be used to verify the call and protect against cross site scripting attacks.
+
+## Get an OIDC ID Token Request (object)
++ redirect_uri (required, string) ... The redirect uri that is registered with IDP Aniqma for this OpenId Connect app.
++ response_type (required, string) ... Set to “code”
++ scope (required, string) ... Requires at least “openid”. Add “profile” and/or “email” to get additional user information returned in the id_token and User Info endpoint.
++ nonce (required, string) ... A secure random string that is used by the OpenID provider to protect against replay attacks. It will be returned as part of the JWT ID Token and should be used to validate the authenticity of the token.
++ state (optional, string) ... A random string that is returned on success and can be used to verify the call and protect against cross site scripting attacks.
+
+## Session Request (object)
++ grant (required, string)... Set to "authorization_code"
++ code (required, string) ... The authorization code returned after a successful authentication via the Authentication Flow.
++ redirect_uri (required, string) ... The redirect uri that is registered with OneLogin for this OpenId Connect app.
+
+## Create Session via Username/Password Request (object)
++ grant_type (required, string)... Set to “password”
++ client_id (required, string) ... The OneLogin generated Client ID for your OpenID Connect app.
++ username (required, string) ... The username for a given user
++ password (required, string) ... The password for a given user
++ scope (required, string) ... Requires at least “openid”. Add “profile” and/or “email” to get additional user information returned in the  id_token and User Info endpoint.
+
+## Refresh a Session Request (object)
++ grant (required, string)... Set to “refresh_token”
++ refresh (required, string) ... Set this to the refresh_token that was returned via the Create a Session with Username/Password or Authorization Code grants.
+
+## Revoke Session Request (object)
++ token (required, string)... The access_token that will be revoked
++ token_type_hint (required, string) ... Set to “access_token”
+
+## Validate Session Request (object)
++ token (required, string)... Set to access_token that will be validated
++ token_type_hint (required, string) ... Set to “access_token”
+
+## Get Auth Code response (object)
++ `code`: `M2QyYWU2OGQtNDAxNi00NzQyLTlhYzktMDRmNTY0ZTIyNTZifFPdOVT` (string, required)
++ `state`: 61c07cd68b0c65a0e9a35bf6c4f472f4 (string, required)
+
+## Unsupported Respone Type (object)
++ `error`: unsupported_response_type (string, required)
++ `error_description`: response_type%20not%20supported (string, required)
+
+## Invalid Respone (object)
++ `error`: invalid_request (string, required)
++ `error_description`: `missing%20required%20parameter(s)%20scope` (string, required)
+
+## Missing Required Respone (object)
++ `error`: invalid_request (string, required)
++ `error_description`: `missing required parameter(s). (redirect_uri)` (string, required)
+
+## Authentication Failed (object)
++ `error`: invalid_request (string, required)
++ `error_description`: Authentication Failed (string, required)
+
+## Invalid User Credential (object)
++ `error`: invalid_request (string, required)
++ `error_description`: `Authentication Failed: Invalid user credentials` (string, required)
+
+## Unauthorized Reponse (object)
++ `error`: invalid_request (string, required)
++ `error_description`: Access is unauthorized (string, required)
+
+## OIDC ID Token Reponse (object)
++ `id_token`: xxxxxx.xxxxxxxxxxxx.xxxxxxxxxx (string, required)
++ `state`: aff55f6cf1d50e75988db51fe7746546 (string, required)
+
+## Redirect Uri Mismact Reponse (object)
++ `error`: error_description (string, required)
++ `error_description`: redirect_uri did not match any client's registered redirect_uri (string, required)
+
+## Invalid Client Reponse (object)
++ `error`: invalid_client (string, required)
++ `error_description`: client is invalid (string, required)
++ `state`: 61c07cd68b0c65a0e9a35bf6c4f472f4 (string, required)
+
+## Create Session Reponse (object)
++ `access_token`: NWE4Nzg2ZDEtNzQyMS00ZDViLThjMjctMGQwNjlmZjU5MWNkBGjFElT7CWzl0dt (string, required)
++ `expires_in`: 3600 (number, required)
++ `id_token`: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkpSY080bnhzNWpnYzhZZE43STJoTE80V (string, required)
++ `token_type`: Bearer (string, required)
++ `refresh_token`: 897987AGBEtNzQyMS00ZDViLThjMjctMGQwNjlmZjU5MWNkBGjFElT7CWzl0d (string, required)
+
+## Create Session Username Reponse (object)
++ `access_token`: NWE4Nzg2ZDEtNzQyMS00ZDViLThjMjctMGQwNjlmZjU5MWNkBGjFElT7CWzl0dt (string, required)
++ `expires_in`: 3600 (number, required)
++ `token_type`: Bearer (string, required)
++ `refresh_token`: 897987AGBEtNzQyMS00ZDViLThjMjctMGQwNjlmZjU5MWNkBGjFElT7CWzl0d (string, required)
+
+## Resource Not Found Reponse (object)
++ `error`: invalid_request (string, required)
++ `error_description`: Resource not found (string, required)
+
+## Invalid Grand Reponse (object)
++ `error`: invalid_grant (string, required)
++ `error_description`: grant request is invalid (string, required)
+
+## Invalid Authorization Header Reponse (object)
++ `error`: invalid_request (string, required)
++ `error_description`: invalid authorization header value format (string, required)
+
+## Unsupported Grand Type Reponse (object)
++ `error`: unsupported_grant_type (string, required)
++ `error_description`: `unsupported grant_type requested (xxxx)` (string, required)
+
+## MFA Required Reponse (object)
++ `error`: invalid_request (string, required)
++ `error_description`: MFA is required for this user (string, required)
+
+## User Locked Reponse (object)
++ `error`: invalid_request (string, required)
++ `error_description`: User is locked. Access is unauthorized (string, required)
+
+## User Suspended Reponse (object)
++ `error`: invalid_request (string, required)
++ `error_description`: User is suspended. Access is unauthorized (string, required)
+
+## Password Expire Reponse (object)
++ `error`: invalid_request (string, required)
++ `error_description`: Password expired (string, required)
+
+## Validate Response (object)
++ `active`: true (boolean, required)
++ `token_type`: access_token (string, required)
++ `sub`: 32916209 (number, required)
++ `client_id`: cc0e6bc0-644a-0135-fd0d-02d3582f0df061892 (string, required)
++ `exp`: 1507952334 (number, required)
++ `iat`: 1507948734 (number, required)
++ `iss`: `https://openid-connect.idp.aniqma.net/oidc` (string, required)
++ `jti`: `OTY3MjhlZGMtNmVlMS00N2ZjLTk4OGItM2RhODgyYWExODNk` (string, required)
+
+## Session Expire Revoke (object)
++ `active`: false (boolean, required)
+
+## Missing Token Response (object)
++ `error`: invalid_request (string, required)
++ `error_description`: `missing required parameter(s). (token)` (string, required)
+
+## Null (object)
+
+## Revoke Unsupported Reponse (object)
++ `error`: unsupported_token_type (string, required)
++ `error_description`: revocation of the presented token type is not supported (string, required)
+
+## Get User Response (object)
++ `sub`: 32916209 (number, required)
++ `email`: `danis@aniqma.com` (string, required)
++ `preferred_username`: `niez.hoo` (string, required)
++ `name`: Danis Yogaswara (string, required)
++ `updated_at`: `2018-01-10 06:36:34` (string, required)
++ `given_name`:  Danis (string, required)
++ `family_name`:  Yogaswara (string, required)
+
+## No Bearer Reponse (object)
++ `error`: invalid_request (string, required)
++ `error_description`: no bearer token provided (string, required)
+
+## Invalid Token Reponse (object)
++ `error`: invalid_token (string, required)
++ `error_description`: invalid token provided (string, required)
